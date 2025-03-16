@@ -830,6 +830,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mdi/js@npm:^7.4.47":
+  version: 7.4.47
+  resolution: "@mdi/js@npm:7.4.47"
+  checksum: 10c0/4364d4dff943c630f9cdddba1a74d3713654e4da1b85bc7a307b2285447a57c41434a39a8520b39957df1028186a2e5944102fd1386d6c0c73e709335f5ccb3e
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -4274,6 +4281,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "meeting-room@workspace:."
   dependencies:
+    "@mdi/js": "npm:^7.4.47"
     "@tsconfig/node22": "npm:^22.0.0"
     "@types/jsdom": "npm:^21.1.7"
     "@types/node": "npm:^22.13.9"
@@ -4302,6 +4310,7 @@ __metadata:
     vue: "npm:^3.5.13"
     vue-router: "npm:^4.5.0"
     vue-tsc: "npm:^2.2.8"
+    vuetify: "npm:^3.7.16"
   languageName: unknown
   linkType: soft
 
@@ -6237,6 +6246,25 @@ __metadata:
     typescript:
       optional: true
   checksum: 10c0/4bbb5caf3f04fed933b01c100804f3693ff902984a3152ea1359a972264fa3240f6551d32f0163a79c64df3715b4d6691818c9f652cdd41b2473c69e2b0a373d
+  languageName: node
+  linkType: hard
+
+"vuetify@npm:^3.7.16":
+  version: 3.7.16
+  resolution: "vuetify@npm:3.7.16"
+  peerDependencies:
+    typescript: ">=4.7"
+    vite-plugin-vuetify: ">=1.0.0"
+    vue: ^3.3.0
+    webpack-plugin-vuetify: ">=2.0.0"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+    vite-plugin-vuetify:
+      optional: true
+    webpack-plugin-vuetify:
+      optional: true
+  checksum: 10c0/786606ad1b6bcc4e33fa164ef8a06845134fad58cbd90bb907822467c34390176a3d1a8458737d066637586f662213444f95e9d818239217b08f8709f3155c1a
   languageName: node
   linkType: hard
 
