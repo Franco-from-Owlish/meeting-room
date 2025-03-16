@@ -6,4 +6,3 @@ export default class OfficeStaff extends Entity<MeetingRoomDatabase> {
   officeId!: number;
   staffMemberId!: number;
 }
-
