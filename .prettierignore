@@ -1,0 +1,6 @@
+# Yarn
+.yarn
+
+# Outputs
+coverage
+dist
