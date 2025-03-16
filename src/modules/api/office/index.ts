@@ -30,7 +30,7 @@ export default class OfficeApi extends BaseApi {
       throw Error("404");
     }
     return {
-      ...this.serializeOffice(data),
+      ...(await this.serializeOffice(data)),
       staff: await this.getOfficeStaff(data),
     };
   }

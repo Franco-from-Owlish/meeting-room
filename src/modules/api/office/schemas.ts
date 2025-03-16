@@ -13,6 +13,6 @@ export type OfficeSchema = {
 };
 
 /* Full office schema */
-export type DetailOfficeSchema = {
+export type DetailOfficeSchema = OfficeSchema & {
   staff: Array<StaffSchema>;
-} | OfficeSchema;
+};
