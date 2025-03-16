@@ -12,8 +12,8 @@ export default class MeetingRoomDatabase extends Dexie {
     super("MeetingRoomDatabase");
     this.version(1).stores({
       offices: "++id, name",
-      staffMembers: "++id, firstName, lastName",
-      officeStaff: "++id, [officeId+staffMemberId]",
+      staff: "++id, firstName, lastName",
+      officeStaff: "++id, [officeId+staffMemberId], staffMemberId",
     });
     this.offices.mapToClass(Office);
     this.staff.mapToClass(StaffMember);

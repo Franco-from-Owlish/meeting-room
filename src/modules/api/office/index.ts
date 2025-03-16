@@ -1,5 +1,9 @@
 import BaseApi, { type PaginationParameters } from "@/modules/api/base";
-import type { DetailOfficeSchema, OfficeSchema } from "@/modules/api/office/schemas";
+import type {
+  OfficeDetailSchema,
+  OfficeSchema,
+  OfficeWriteSchema,
+} from "@/modules/api/office/schemas";
 import type Office from "@/modules/dexie/entities/office";
 import type { StaffSchema } from "../staff/schemas";
 
@@ -19,12 +23,12 @@ export default class OfficeApi extends BaseApi {
     return members;
   }
 
-  async createOffice(data: OfficeSchema): Promise<DetailOfficeSchema> {
+  async createOffice(data: OfficeWriteSchema): Promise<OfficeDetailSchema> {
     const id = await this.database.offices.add(data);
     return this.getOffice(id);
   }
 
-  async getOffice(id: number): Promise<DetailOfficeSchema> {
+  async getOffice(id: number): Promise<OfficeDetailSchema> {
     const data = await this.database.offices.get(id);
     if (data == undefined) {
       throw Error("404");
