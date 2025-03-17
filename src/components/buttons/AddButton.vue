@@ -7,6 +7,7 @@
     @click="showAddModal"
     :height="size"
     :width="size"
+    rounded="pill"
   />
 </template>
 

@@ -3,7 +3,7 @@ import { createApp } from "vue";
 import App from "@/App.vue";
 import pinia from "@/stores";
 import router from "@/router";
-import vuetify from "@/modules/vuetify";
+import vuetify from "@/modules/vuetify/index";
 
 const app = createApp(App);
 

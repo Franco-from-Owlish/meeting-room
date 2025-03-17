@@ -18,6 +18,7 @@
       </v-main>
     </v-layout>
     <AddButton />
+    <AddDialog />
   </v-app>
 </template>
 
@@ -29,6 +30,7 @@
   import { VContainer, VRow } from "vuetify/components/VGrid";
   import { useAppStore } from "@/stores/app";
   import AddButton from "@/components/buttons/AddButton.vue";
+  import AddDialog from "@/components/dialogs/AddDialog.vue";
 
   const appStore = useAppStore();
 </script>
