@@ -12,7 +12,10 @@
   import OfficeCard from "@/components/cards/OfficeCard.vue";
   import OfficeApi from "@/modules/api/office";
   import type { OfficeSchema } from "@/modules/api/office/schemas";
+  import { useAppStore } from "@/stores/app";
   import { onMounted, ref } from "vue";
+
+  const appStore = useAppStore();
 
   const officeApi = new OfficeApi();
   const offices = ref<Array<OfficeSchema>>([]);
@@ -23,5 +26,9 @@
 
   onMounted(() => {
     fetchOffices();
+    appStore.$patch({
+      pageTitle: "All offices",
+      hideAddButton: true,
+    });
   });
 </script>
