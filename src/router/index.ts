@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
-import DefaultLayout from "@/layouts/DefaultLayout.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
-      component: DefaultLayout,
+      component: () => import("@/layouts/DefaultLayout.vue"),
       children: [
         {
           path: "",
@@ -21,12 +20,17 @@ const router = createRouter({
     },
     {
       path: "/office",
-      component: DefaultLayout,
+      component: () => import("@/layouts/DetailLayout.vue"),
       children: [
         {
           name: "OfficeNew",
           path: "new",
-          component: () => import("@/views/HomeView.vue"),
+          component: () => import("@/views/office/OfficeNewView.vue"),
+        },
+        {
+          name: "OfficeDetail",
+          path: "detail/id",
+          component: () => import("@/views/office/OfficeDetailView.vue"),
         },
       ],
     },
