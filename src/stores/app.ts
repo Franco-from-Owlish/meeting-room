@@ -6,10 +6,11 @@ export const useAppStore = defineStore("app", () => {
   const route = useRoute();
   const router = useRouter();
 
-  // page title
+  // App
   const pageTitle = ref<string>("All offices");
+  const hideAddButton = ref<boolean>(false);
 
-  // modals
+  // Modals / Dialogs
   function showModal(queryKey: "add" | "staff") {
     router.push({
       path: route.path,
@@ -35,10 +36,11 @@ export const useAppStore = defineStore("app", () => {
   const showStaffModal = computed<boolean>(() => route.query["staff"] === "show");
 
   return {
-    // pageTitle
+    // App
     pageTitle,
+    hideAddButton,
 
-    // modals
+    // Dialogs
     showAddModal,
     showStaffModal,
     showModal,
