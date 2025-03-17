@@ -9,8 +9,12 @@ const router = createRouter({
       component: DefaultLayout,
       children: [
         {
-          name: "Dashboard",
           path: "",
+          redirect: "home",
+        },
+        {
+          name: "Home",
+          path: "home",
           component: () => import("@/views/HomeView.vue"),
         },
       ],
