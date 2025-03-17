@@ -3,7 +3,7 @@
     app
     class="mr-4"
     color="#0D4477"
-    :icon="mdiPlus"
+    :icon="PlusIcon"
     @click="showAddModal"
     :height="size"
     :width="size"
@@ -13,9 +13,9 @@
 
 <script setup lang="ts">
   import { VFab } from "vuetify/components/VFab";
-  import { mdiPlus } from "@mdi/js";
 
   import { useAppStore } from "@/stores/app";
+  import PlusIcon from "@/components/icons/PlusIcon.vue";
 
   const size: string = "64px";
 
