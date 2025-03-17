@@ -11,9 +11,7 @@
           </template>
         </v-app-bar>
         <v-container fluid>
-          <v-row>
-            <router-view />
-          </v-row>
+          <router-view />
         </v-container>
       </v-main>
     </v-layout>
@@ -27,7 +25,7 @@
   import { VAppBar } from "vuetify/components/VAppBar";
   import { VLayout } from "vuetify/components/VLayout";
   import { VMain } from "vuetify/components/VMain";
-  import { VContainer, VRow } from "vuetify/components/VGrid";
+  import { VContainer } from "vuetify/components/VGrid";
   import { useAppStore } from "@/stores/app";
   import AddButton from "@/components/buttons/AddButton.vue";
   import AddDialog from "@/components/dialogs/AddDialog.vue";
