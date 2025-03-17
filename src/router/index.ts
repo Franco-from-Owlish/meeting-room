@@ -19,6 +19,17 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: "/office",
+      component: DefaultLayout,
+      children: [
+        {
+          name: "OfficeNew",
+          path: "new",
+          component: () => import("@/views/HomeView.vue"),
+        },
+      ],
+    },
   ],
 });
 
