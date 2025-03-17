@@ -23,11 +23,21 @@ export default class OfficeApi extends BaseApi {
     return members;
   }
 
+  /**
+   * Create a new office.
+   * @param data - Office data.
+   * @returns Detailed office data.
+   */
   async createOffice(data: OfficeWriteSchema): Promise<OfficeDetailSchema> {
     const id = await this.database.offices.add(data);
     return this.getOffice(id);
   }
 
+  /**
+   * Get office details.
+   * @param id - Office primary key.
+   * @returns Detailed office data.
+   */
   async getOffice(id: number): Promise<OfficeDetailSchema> {
     const data = await this.database.offices.get(id);
     if (data == undefined) {
@@ -40,10 +50,11 @@ export default class OfficeApi extends BaseApi {
   }
 
   /**
+   * List all offices.
    * @param pagination - Pagination data.
    * @returns Paginated list of offices.
    */
-  async getOffices(pagination: PaginationParameters): Promise<Array<OfficeSchema>> {
+  async getAllOffices(pagination: PaginationParameters): Promise<Array<OfficeSchema>> {
     const collection = this.paginate(this.database.offices.orderBy("id"), pagination);
     const data = await collection.toArray();
     return Promise.all(

@@ -1,5 +1,6 @@
 import type { StaffSchema } from "@/modules/api/staff/schemas";
 
+/* Office create data */
 export type OfficeWriteSchema = {
   name: string;
   address: string;
