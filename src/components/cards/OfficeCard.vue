@@ -19,12 +19,12 @@
 </template>
 
 <script setup lang="ts">
-import type { OfficeSchema } from "@/modules/api/office/schemas";
-import { VCard } from "vuetify/components/VCard";
-import { VRow } from "vuetify/components/VGrid";
-import PeopleIcon from "@/components/icons/PeopleIcon.vue";
+  import type { OfficeSchema } from "@/modules/api/office/schemas";
+  import { VCard } from "vuetify/components/VCard";
+  import { VRow } from "vuetify/components/VGrid";
+  import PeopleIcon from "@/components/icons/PeopleIcon.vue";
 
-defineProps<{
-  office: OfficeSchema;
-}>();
+  defineProps<{
+    office: OfficeSchema;
+  }>();
 </script>
