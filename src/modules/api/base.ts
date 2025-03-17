@@ -26,7 +26,7 @@ export default abstract class BaseApi {
    * @param paramaters - Pagination parameters.
    * @returns Paginated collection.
    */
-  paginate(collection: Collection, paramaters: PaginationParameters): Collection {
+  protected paginate(collection: Collection, paramaters: PaginationParameters): Collection {
     return collection.limit(paramaters.limit ?? 10).offset(paramaters.offset ?? 0);
   }
 }

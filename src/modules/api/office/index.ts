@@ -54,8 +54,8 @@ export default class OfficeApi extends BaseApi {
    * @param pagination - Pagination data.
    * @returns Paginated list of offices.
    */
-  async getAllOffices(pagination: PaginationParameters): Promise<Array<OfficeSchema>> {
-    const collection = this.paginate(this.database.offices.orderBy("id"), pagination);
+  async getAllOffices(pagination?: PaginationParameters): Promise<Array<OfficeSchema>> {
+    const collection = this.paginate(this.database.offices.orderBy("id"), pagination ?? {});
     const data = await collection.toArray();
     return Promise.all(
       data.flatMap<Promise<OfficeSchema>>(async (e) => await this.serializeOffice(e)),
