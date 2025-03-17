@@ -14,8 +14,20 @@ export const useAppStore = defineStore("app", () => {
     router.push({
       path: route.path,
       query: {
+        ...route.query,
         add: queryKey === "add" ? "show" : undefined,
         staff: queryKey === "staff" ? "show" : undefined,
+      },
+    });
+  }
+
+  function hideModals() {
+    router.push({
+      path: route.path,
+      query: {
+        ...route.query,
+        add: undefined,
+        staff: undefined,
       },
     });
   }
@@ -30,5 +42,6 @@ export const useAppStore = defineStore("app", () => {
     showAddModal,
     showStaffModal,
     showModal,
+    hideModals,
   };
 });
