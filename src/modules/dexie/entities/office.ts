@@ -1,4 +1,5 @@
 import { Entity, type IndexableTypeArray } from "dexie";
+
 import type MeetingRoomDatabase from "@/modules/dexie/database";
 
 export default class Office extends Entity<MeetingRoomDatabase> {

@@ -64,19 +64,20 @@
 </template>
 
 <script setup lang="ts">
-  import type { OfficeSchema } from "@/modules/api/office/schemas";
+  import { computed, ref } from "vue";
+  import { TinyColor } from "@ctrl/tinycolor";
+  import { mdiChevronDown, mdiChevronUp } from "@mdi/js";
+  import { useRouter } from "vue-router";
   import { VCard } from "vuetify/components/VCard";
   import { VRow } from "vuetify/components/VGrid";
   import { VIcon } from "vuetify/components/VIcon";
   import { VList, VListItem } from "vuetify/components/VList";
+
   import PeopleIcon from "@/components/icons/PeopleIcon.vue";
-  import { computed, ref } from "vue";
-  import { mdiChevronDown, mdiChevronUp } from "@mdi/js";
-  import PhoneIcon from "../icons/PhoneIcon.vue";
+  import type { OfficeSchema } from "@/modules/api/office/schemas";
   import EmailIcon from "../icons/EmailIcon.vue";
   import LocationIcon from "../icons/LocationIcon.vue";
-  import { TinyColor } from "@ctrl/tinycolor";
-  import { useRouter } from "vue-router";
+  import PhoneIcon from "../icons/PhoneIcon.vue";
 
   const router = useRouter();
 

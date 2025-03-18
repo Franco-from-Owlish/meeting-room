@@ -1,5 +1,6 @@
-import type { StaffSchema } from "@/modules/api/staff/schemas";
 import { z } from "zod";
+
+import type { StaffSchema } from "@/modules/api/staff/schemas";
 
 /* OfficeWriteSchema validator */
 export const zOfficeWriteSchema = z.object({

@@ -1,7 +1,8 @@
-import db from "@/modules/dexie";
-import type MeetingRoomDatabase from "@/modules/dexie/database";
 import type { Collection } from "dexie";
 import type { SomeZodObject } from "zod";
+
+import db from "@/modules/dexie";
+import type MeetingRoomDatabase from "@/modules/dexie/database";
 
 export interface PaginationParameters {
   /* Number of elements to return */

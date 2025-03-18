@@ -42,17 +42,18 @@
 </template>
 
 <script setup lang="ts">
-  import { VForm } from "vuetify/components/VForm";
-  import { VBtn } from "vuetify/components/VBtn";
-  import OfficeApi from "@/modules/api/office";
-  import { useAppStore } from "@/stores/app";
   import { markRaw, onMounted, ref, toValue } from "vue";
-  import { VTextField } from "vuetify/components/VTextField";
-  import type { OfficeWriteSchema } from "@/modules/api/office/schemas";
   import { useRouter } from "vue-router";
+  import { VBtn } from "vuetify/components/VBtn";
+  import { VForm } from "vuetify/components/VForm";
+  import { VTextField } from "vuetify/components/VTextField";
+
   import CapacityField from "@/components/fields/CapacityField.vue";
-  import ColourRadio from "@/components/radios/ColourRadio.vue";
   import SectionTitile from "@/components/headings/SectionTitile.vue";
+  import ColourRadio from "@/components/radios/ColourRadio.vue";
+  import OfficeApi from "@/modules/api/office";
+  import type { OfficeWriteSchema } from "@/modules/api/office/schemas";
+  import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();
   const router = useRouter();

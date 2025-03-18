@@ -18,14 +18,15 @@
 </template>
 
 <script setup lang="ts">
-  import SectionTitile from "@/components/headings/SectionTitile.vue";
-  import type { OfficeSchema } from "@/modules/api/office/schemas";
   import { computed, onMounted, ref, watch } from "vue";
   import { useRoute } from "vue-router";
-  import { VProgressCircular } from "vuetify/components/VProgressCircular";
   import { VRow } from "vuetify/components/VGrid";
+  import { VProgressCircular } from "vuetify/components/VProgressCircular";
+
   import OfficeCard from "@/components/cards/OfficeCard.vue";
+  import SectionTitile from "@/components/headings/SectionTitile.vue";
   import OfficeApi from "@/modules/api/office";
+  import type { OfficeSchema } from "@/modules/api/office/schemas";
   import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();

@@ -1,6 +1,8 @@
 import "@/assets/style/main.scss";
+
 import { createVuetify } from "vuetify";
 import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
+
 import lightTheme from "./lightTheme";
 
 const vuetify = createVuetify({

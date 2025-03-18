@@ -31,15 +31,16 @@
 </template>
 
 <script setup lang="ts">
+  import { mdiArrowLeft } from "@mdi/js";
   import { VApp } from "vuetify/components/VApp";
-  import { VAppBar, VAppBarTitle, VAppBarNavIcon } from "vuetify/components/VAppBar";
+  import { VAppBar, VAppBarNavIcon,VAppBarTitle } from "vuetify/components/VAppBar";
+  import { VContainer, VSpacer } from "vuetify/components/VGrid";
   import { VLayout } from "vuetify/components/VLayout";
   import { VMain } from "vuetify/components/VMain";
-  import { VContainer, VSpacer } from "vuetify/components/VGrid";
-  import { useAppStore } from "@/stores/app";
+
   import AddButton from "@/components/buttons/AddButton.vue";
   import AddDialog from "@/components/dialogs/AddDialog.vue";
-  import { mdiArrowLeft } from "@mdi/js";
+  import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();
 </script>

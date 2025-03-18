@@ -1,4 +1,5 @@
 import { Entity } from "dexie";
+
 import type MeetingRoomDatabase from "../database";
 
 export default class OfficeStaff extends Entity<MeetingRoomDatabase> {

@@ -10,11 +10,12 @@
 </template>
 
 <script setup lang="ts">
+  import { onMounted, ref } from "vue";
+
   import OfficeCard from "@/components/cards/OfficeCard.vue";
   import OfficeApi from "@/modules/api/office";
   import type { OfficeSchema } from "@/modules/api/office/schemas";
   import { useAppStore } from "@/stores/app";
-  import { onMounted, ref } from "vue";
 
   const appStore = useAppStore();
 
