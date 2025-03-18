@@ -13,9 +13,7 @@ export default mergeConfig(
       },
       environment: "jsdom",
       exclude: [...configDefaults.exclude, "e2e/**"],
-      setupFiles: [
-        "fake-indexeddb/auto"
-      ],
+      setupFiles: ["fake-indexeddb/auto"],
       root: fileURLToPath(new URL("./", import.meta.url)),
     },
   }),

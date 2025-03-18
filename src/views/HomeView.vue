@@ -1,9 +1,35 @@
-<script setup lang="ts">
-  import TheWelcome from "../components/TheWelcome.vue";
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <OfficeCard
+      v-for="office in offices"
+      :key="office.id"
+      :office="office"
+      class="mb-4"
+    />
+  </div>
 </template>
+
+<script setup lang="ts">
+  import OfficeCard from "@/components/cards/OfficeCard.vue";
+  import OfficeApi from "@/modules/api/office";
+  import type { OfficeSchema } from "@/modules/api/office/schemas";
+  import { useAppStore } from "@/stores/app";
+  import { onMounted, ref } from "vue";
+
+  const appStore = useAppStore();
+
+  const officeApi = new OfficeApi();
+  const offices = ref<Array<OfficeSchema>>([]);
+
+  async function fetchOffices() {
+    offices.value = await officeApi.getAllOffices();
+  }
+
+  onMounted(() => {
+    fetchOffices();
+    appStore.$patch({
+      pageTitle: "All offices",
+      hideAddButton: true,
+    });
+  });
+</script>
