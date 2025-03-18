@@ -2,7 +2,10 @@
   <v-app>
     <v-layout>
       <v-main>
-        <v-app-bar class="elevation-0">
+        <v-app-bar
+          class="elevation-0"
+          color="background"
+        >
           <v-app-bar-nav-icon
             :icon="mdiArrowLeft"
             color="on-surface"
