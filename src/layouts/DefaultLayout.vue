@@ -5,6 +5,7 @@
         <v-app-bar
           density="prominent"
           class="elevation-0"
+          color="background"
         >
           <template #title>
             <span id="title">{{ appStore.pageTitle }}</span>

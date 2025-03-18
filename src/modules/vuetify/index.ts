@@ -1,4 +1,4 @@
-import "vuetify/styles";
+import "@/assets/style/main.scss";
 import { createVuetify } from "vuetify";
 import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 import lightTheme from "./lightTheme";
@@ -14,6 +14,12 @@ const vuetify = createVuetify({
     },
     VCardTitle: {
       class: "text-wrap",
+    },
+    VList: {
+      "bg-color": "#0000",
+    },
+    VListItem: {
+      "bg-color": "transparent",
     },
     VTextField: {
       variant: "outlined",

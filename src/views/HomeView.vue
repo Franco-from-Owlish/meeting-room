@@ -4,6 +4,7 @@
       v-for="office in offices"
       :key="office.id"
       :office="office"
+      class="mb-4"
     />
   </div>
 </template>
