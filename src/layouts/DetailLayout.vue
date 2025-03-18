@@ -33,7 +33,7 @@
 <script setup lang="ts">
   import { mdiArrowLeft } from "@mdi/js";
   import { VApp } from "vuetify/components/VApp";
-  import { VAppBar, VAppBarNavIcon,VAppBarTitle } from "vuetify/components/VAppBar";
+  import { VAppBar, VAppBarNavIcon, VAppBarTitle } from "vuetify/components/VAppBar";
   import { VContainer, VSpacer } from "vuetify/components/VGrid";
   import { VLayout } from "vuetify/components/VLayout";
   import { VMain } from "vuetify/components/VMain";

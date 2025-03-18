@@ -1,4 +1,4 @@
-import { describe, expect,it } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import OfficeApi from "../index";
 import type { OfficeWriteSchema } from "../schemas";

@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { describe, expect,it } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import PeopleIcon from "@/components/icons/PeopleIcon.vue";
 
