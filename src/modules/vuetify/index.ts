@@ -10,6 +10,7 @@ const vuetify = createVuetify({
     },
     VBtn: {
       color: "primary",
+      rounded: "pill",
     },
     VCardTitle: {
       class: "text-wrap",
