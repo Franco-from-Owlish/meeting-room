@@ -70,7 +70,7 @@ const props = defineProps<{
   office: OfficeSchema;
 }>();
 
-const moreInfo = ref<boolean>(true);
+const moreInfo = ref<boolean>(false);
 
 function toOfficeDetail() {
   router.push({
