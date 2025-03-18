@@ -1,0 +1,37 @@
+name: Build
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: "build"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: ./.github/actions/setup-node
+
+      - name: Setup dependencies
+        uses: ./.github/actions/setup-dependencies
+
+      - name: Lint
+        run: yarn run lint
+
+      - name: Type check
+        run: yarn run type-check
+
+      # Required for e2e tests
+      - name: Build
+        uses: ./.github/actions/build
+
+      - name: Test
+        run: yarn run test
