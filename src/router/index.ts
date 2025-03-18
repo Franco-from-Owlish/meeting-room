@@ -29,7 +29,7 @@ const router = createRouter({
         },
         {
           name: "OfficeDetail",
-          path: "detail/id",
+          path: "detail/:id",
           component: () => import("@/views/office/OfficeDetailView.vue"),
         },
       ],
