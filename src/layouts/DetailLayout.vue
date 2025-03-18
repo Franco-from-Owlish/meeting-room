@@ -20,8 +20,10 @@
         </v-container>
       </v-main>
     </v-layout>
-    <AddButton />
-    <AddDialog />
+    <template v-if="!appStore.hideAddButton">
+      <AddButton />
+      <AddDialog />
+    </template>
   </v-app>
 </template>
 
