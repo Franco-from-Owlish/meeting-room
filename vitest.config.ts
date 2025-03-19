@@ -6,6 +6,12 @@ import viteConfig from "./vite.config";
 export default mergeConfig(
   viteConfig,
   defineConfig({
+    resolve: {
+      alias: {
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
+        "@test": fileURLToPath(new URL("./tests", import.meta.url)),
+      },
+    },
     test: {
       coverage: {
         enabled: true,
