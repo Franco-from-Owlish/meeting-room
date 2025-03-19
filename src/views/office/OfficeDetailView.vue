@@ -14,7 +14,10 @@
     <template v-else>
       <OfficeCard :office="office"></OfficeCard>
 
-      <AddOfficeStaffDialog :office-id="officeId"></AddOfficeStaffDialog>
+      <AddOfficeStaffDialog
+        :office="office"
+        @updated="fetchOffice()"
+      ></AddOfficeStaffDialog>
 
       <v-text-field
         v-model="search"
@@ -64,7 +67,7 @@
     hideAddButton: false,
   });
 
-  const { officeId, office, handleOfficeIdUpdate } = useOfficeDetail();
+  const { office, handleOfficeIdUpdate, fetchOffice } = useOfficeDetail();
 
   const search = ref<string>("");
   const filteredStaff = computed<StaffSchema[]>(() => {
