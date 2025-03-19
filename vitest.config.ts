@@ -13,6 +13,9 @@ export default mergeConfig(
         reporter: ["html", "lcov", "cobertura", "text"],
       },
       environment: "jsdom",
+      server: {
+        deps: { inline: ["vuetify"] },
+      },
       exclude: [...configDefaults.exclude, "e2e/**"],
       setupFiles: ["fake-indexeddb/auto"],
       root: fileURLToPath(new URL("./", import.meta.url)),
