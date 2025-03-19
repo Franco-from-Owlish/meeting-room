@@ -10,8 +10,7 @@ runs:
         cp dist/index.html dist/404.html
       env:
         NODE_ENV: production
-      shell:
-        bash
+      shell: bash
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3

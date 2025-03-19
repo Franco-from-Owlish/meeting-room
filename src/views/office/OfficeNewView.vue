@@ -21,24 +21,43 @@
         placeholder="Phone Number"
         label="Phone Number"
       />
-      <v-text-field
-        v-model="data.capacity"
-        placeholder="Maximum capacity"
-        label="Maximum capacity"
-      />
+      <CapacityField v-model="data.capacity" />
+
+      <SectionTitile>Office Colour</SectionTitile>
+
+      <ColourRadio v-model="data.colour" />
+
+      <v-row class="my-4">
+        <v-btn
+          variant="flat"
+          width="232px"
+          class="my-4"
+          @click="createOffice()"
+        >
+          Add Office
+        </v-btn>
+      </v-row>
     </v-form>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { VForm } from "vuetify/components/VForm";
-  import OfficeApi from "@/modules/api/office";
-  import { useAppStore } from "@/stores/app";
   import { onMounted, ref } from "vue";
+  import { useRouter } from "vue-router";
+  import { VBtn } from "vuetify/components/VBtn";
+  import { VForm } from "vuetify/components/VForm";
+  import { VRow } from "vuetify/components/VGrid";
   import { VTextField } from "vuetify/components/VTextField";
+
+  import CapacityField from "@/components/fields/CapacityField.vue";
+  import SectionTitile from "@/components/headings/SectionTitile.vue";
+  import ColourRadio from "@/components/radios/ColourRadio.vue";
+  import OfficeApi from "@/modules/api/office";
   import type { OfficeWriteSchema } from "@/modules/api/office/schemas";
+  import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();
+  const router = useRouter();
 
   const api = new OfficeApi();
   const data = ref<OfficeWriteSchema>({
@@ -49,6 +68,14 @@
     capacity: 0,
     colour: "",
   });
+
+  async function createOffice() {
+    const resp = await api.createOffice(data.value);
+    router.push({
+      name: "OfficeDetail",
+      params: { id: resp.id },
+    });
+  }
 
   onMounted(() => {
     appStore.$patch({

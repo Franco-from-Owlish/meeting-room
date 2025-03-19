@@ -25,12 +25,13 @@
 </template>
 
 <script setup lang="ts">
-  import { VCard } from "vuetify/components/VCard";
-  import { VDialog } from "vuetify/components/VDialog";
-  import { VBtn } from "vuetify/components/VBtn";
-  import { useAppStore } from "@/stores/app";
   import { computed } from "vue";
   import type { RouteLocationRaw } from "vue-router";
+  import { VBtn } from "vuetify/components/VBtn";
+  import { VCard } from "vuetify/components/VCard";
+  import { VDialog } from "vuetify/components/VDialog";
+
+  import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();
 

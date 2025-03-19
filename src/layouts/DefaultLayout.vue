@@ -18,18 +18,21 @@
     </v-layout>
     <AddButton />
     <AddDialog />
+    <AddStaffDialog />
   </v-app>
 </template>
 
 <script setup lang="ts">
   import { VApp } from "vuetify/components/VApp";
   import { VAppBar } from "vuetify/components/VAppBar";
+  import { VContainer } from "vuetify/components/VGrid";
   import { VLayout } from "vuetify/components/VLayout";
   import { VMain } from "vuetify/components/VMain";
-  import { VContainer } from "vuetify/components/VGrid";
-  import { useAppStore } from "@/stores/app";
+
   import AddButton from "@/components/buttons/AddButton.vue";
   import AddDialog from "@/components/dialogs/AddDialog.vue";
+  import AddStaffDialog from "@/components/dialogs/AddStaffDialog.vue";
+  import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();
 </script>

@@ -1,11 +1,12 @@
 import BaseApi, { type PaginationParameters } from "@/modules/api/base";
-import type {
-  OfficeDetailSchema,
-  OfficeSchema,
-  OfficeWriteSchema,
+import {
+  type OfficeDetailSchema,
+  type OfficeSchema,
+  type OfficeWriteSchema,
+  zOfficeWriteSchema,
 } from "@/modules/api/office/schemas";
+import type { StaffSchema } from "@/modules/api/staff/schemas";
 import type Office from "@/modules/dexie/entities/office";
-import type { StaffSchema } from "../staff/schemas";
 
 export default class OfficeApi extends BaseApi {
   private async serializeOffice(office: Office): Promise<OfficeSchema> {
@@ -29,8 +30,13 @@ export default class OfficeApi extends BaseApi {
    * @returns Detailed office data.
    */
   async createOffice(data: OfficeWriteSchema): Promise<OfficeDetailSchema> {
-    const id = await this.database.offices.add(data);
+    const resp = await this.parseSchema(zOfficeWriteSchema, data);
+    // TODO: handle errors
+    // if (resp.status === "failed") throw Error(Object.entries(resp.error));
+    // if (resp.status === "success") {
+    const id = await this.database.offices.add(resp.data!);
     return this.getOffice(id);
+    // }
   }
 
   /**

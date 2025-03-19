@@ -2,10 +2,14 @@
   <v-app>
     <v-layout>
       <v-main>
-        <v-app-bar class="elevation-0">
+        <v-app-bar
+          class="elevation-0"
+          color="background"
+        >
           <v-app-bar-nav-icon
             :icon="mdiArrowLeft"
             color="on-surface"
+            :to="{ name: 'Home' }"
           />
 
           <v-spacer />
@@ -20,21 +24,26 @@
         </v-container>
       </v-main>
     </v-layout>
-    <AddButton />
-    <AddDialog />
+    <template v-if="!appStore.hideAddButton">
+      <AddButton />
+      <AddDialog />
+    </template>
+    <AddStaffDialog />
   </v-app>
 </template>
 
 <script setup lang="ts">
+  import { mdiArrowLeft } from "@mdi/js";
   import { VApp } from "vuetify/components/VApp";
-  import { VAppBar, VAppBarTitle, VAppBarNavIcon } from "vuetify/components/VAppBar";
+  import { VAppBar, VAppBarNavIcon, VAppBarTitle } from "vuetify/components/VAppBar";
+  import { VContainer, VSpacer } from "vuetify/components/VGrid";
   import { VLayout } from "vuetify/components/VLayout";
   import { VMain } from "vuetify/components/VMain";
-  import { VContainer, VSpacer } from "vuetify/components/VGrid";
-  import { useAppStore } from "@/stores/app";
+
   import AddButton from "@/components/buttons/AddButton.vue";
   import AddDialog from "@/components/dialogs/AddDialog.vue";
-  import { mdiArrowLeft } from "@mdi/js";
+  import AddStaffDialog from "@/components/dialogs/AddStaffDialog.vue";
+  import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();
 </script>

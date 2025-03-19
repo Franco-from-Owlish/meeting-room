@@ -1,7 +1,9 @@
 import Dexie, { type EntityTable } from "dexie";
+
 import Office from "@/modules/dexie/entities/office";
-import StaffMember from "./entities/staff";
+
 import OfficeStaff from "./entities/officeStaff";
+import StaffMember from "./entities/staff";
 
 export default class MeetingRoomDatabase extends Dexie {
   offices!: EntityTable<Office, "id">;

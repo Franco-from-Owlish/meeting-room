@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import OfficeApi from "../index";
 import type { OfficeWriteSchema } from "../schemas";
@@ -10,7 +10,7 @@ describe("OfficeApi", () => {
     it("can add a record", async () => {
       const data: OfficeWriteSchema = {
         name: "test",
-        phone: "+27215468899",
+        phone: "0825546547",
         emailAddress: "test@test.com",
         address: "Cape Town",
         colour: "#000000",
