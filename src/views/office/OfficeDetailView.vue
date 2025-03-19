@@ -42,9 +42,8 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, ref, watch } from "vue";
+  import { computed, onMounted, ref } from "vue";
   import { mdiMagnify } from "@mdi/js";
-  import { useRoute } from "vue-router";
   import { VRow } from "vuetify/components/VGrid";
   import { VList } from "vuetify/components/VList";
   import { VProgressCircular } from "vuetify/components/VProgressCircular";
@@ -54,22 +53,18 @@
   import AddOfficeStaffDialog from "@/components/dialogs/AddOfficeStaffDialog.vue";
   import SectionTitle from "@/components/headings/SectionTitle.vue";
   import StaffItem from "@/components/lists/StaffItem.vue";
-  import OfficeApi from "@/modules/api/office";
-  import type { OfficeDetailSchema } from "@/modules/api/office/schemas";
+  import useOfficeDetail from "@/compostables/officeDetail";
   import type { StaffSchema } from "@/modules/api/staff/schemas";
   import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();
-  const route = useRoute();
-  const api = new OfficeApi();
 
   appStore.$patch({
     pageTitle: "Office",
     hideAddButton: false,
   });
 
-  const officeId = computed<number>(() => parseInt((route.params["id"] as string) ?? "0"));
-  const office = ref<OfficeDetailSchema>();
+  const { officeId, office, handleOfficeIdUpdate } = useOfficeDetail();
 
   const search = ref<string>("");
   const filteredStaff = computed<StaffSchema[]>(() => {
@@ -79,19 +74,7 @@
     );
   });
 
-  async function fetchOffice() {
-    const resp = await api.getOffice(officeId.value);
-    office.value = resp;
-  }
-
-  function handleOfficeIdUpdate() {
-    if (officeId.value === 0) return;
-    fetchOffice();
-  }
-
   onMounted(() => {
     handleOfficeIdUpdate();
   });
-
-  watch(() => officeId, handleOfficeIdUpdate);
 </script>
