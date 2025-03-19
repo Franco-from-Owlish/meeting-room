@@ -12,7 +12,7 @@
             @click="tab--"
           />
           <v-spacer />
-          <span class="dialogTitle">New Staff Member</span>
+          <span class="dialogTitle">{{ isEdit ? "Edit" : "New" }} Staff Member</span>
           <v-spacer />
           <v-icon
             :icon="mdiCloseCircleOutline"
@@ -58,8 +58,8 @@
         >
         <v-btn
           v-else
-          @click="createStaffMember()"
-          >Add Staff Member</v-btn
+          @click="submit()"
+          >{{ isEdit ? "Update" : "Add" }} Staff Member</v-btn
         >
       </template>
     </v-card>
@@ -67,8 +67,9 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from "vue";
+  import { computed, ref, watch } from "vue";
   import { mdiArrowLeft, mdiCloseCircleOutline } from "@mdi/js";
+  import { useRoute } from "vue-router";
   import { VBtn } from "vuetify/components/VBtn";
   import { VCard } from "vuetify/components/VCard";
   import { VDialog } from "vuetify/components/VDialog";
@@ -84,7 +85,10 @@
   import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();
+  const route = useRoute();
 
+  const staffId = computed<number>(() => parseInt(route.query["staff"]?.toString() ?? "0"));
+  const isEdit = computed<boolean>(() => staffId.value > 0);
   const show = computed<boolean>({
     get: () => appStore.showStaffModal,
     set: (value: boolean) => {
@@ -102,11 +106,34 @@
   const data = ref<StaffWriteSchema>({
     firstName: "",
     lastName: "",
-    avatar: "Batsman",
+    avatar: "Balloons",
   });
+
+  function submit() {
+    if (isEdit.value) {
+      updateStaffMember();
+    } else {
+      createStaffMember();
+    }
+    appStore.hideModals();
+  }
 
   async function createStaffMember() {
     await api.createStaffMember(data.value);
-    appStore.hideModals();
   }
+
+  async function updateStaffMember() {
+    await api.updateMember({ ...data.value, id: staffId.value });
+  }
+
+  async function fetchStaff() {
+    const resp = await api.getStaffMember(staffId.value);
+    data.value = resp;
+  }
+
+  watch(isEdit, (value) => {
+    if (value) {
+      fetchStaff();
+    }
+  });
 </script>
