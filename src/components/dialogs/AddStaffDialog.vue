@@ -36,7 +36,10 @@
         />
       </div>
 
-      <div v-show="tab === 1" class="mb-2">
+      <div
+        v-show="tab === 1"
+        class="mb-2"
+      >
         <SectionTitile>Avatar</SectionTitile>
 
         <AvatarRadio v-model="data.avatar" />

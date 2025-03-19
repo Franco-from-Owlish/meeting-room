@@ -9,7 +9,7 @@
           <v-app-bar-nav-icon
             :icon="mdiArrowLeft"
             color="on-surface"
-            :to="{name: 'Home'}"
+            :to="{ name: 'Home' }"
           />
 
           <v-spacer />
