@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, ref } from "vue";
+  import { computed, onMounted, ref, watch } from "vue";
   import { mdiMagnify } from "@mdi/js";
   import { VRow } from "vuetify/components/VGrid";
   import { VList } from "vuetify/components/VList";
@@ -80,4 +80,13 @@
   onMounted(() => {
     handleOfficeIdUpdate();
   });
+
+  watch(() => appStore.staffUpdated, (value) => {
+    if (value) {
+      fetchOffice();
+      appStore.$patch({
+        staffUpdated: false,
+      })
+    }
+  })
 </script>
