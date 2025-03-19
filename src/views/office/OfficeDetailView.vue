@@ -81,12 +81,15 @@
     handleOfficeIdUpdate();
   });
 
-  watch(() => appStore.staffUpdated, (value) => {
-    if (value) {
-      fetchOffice();
-      appStore.$patch({
-        staffUpdated: false,
-      })
-    }
-  })
+  watch(
+    () => appStore.staffUpdated,
+    (value) => {
+      if (value) {
+        fetchOffice();
+        appStore.$patch({
+          staffUpdated: false,
+        });
+      }
+    },
+  );
 </script>
