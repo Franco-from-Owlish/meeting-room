@@ -12,20 +12,20 @@
 </template>
 
 <script setup lang="ts">
-  import StaffAvatars, { type AllowedAvatars } from "@/data/avatars";
+  import StaffAvatars, { type TAllowedAvatars } from "@/data/avatars";
 
-  const model = defineModel<typeof AllowedAvatars>({ required: true });
+  const model = defineModel<TAllowedAvatars>({ required: true });
 
-  function setModel(avatar: typeof AllowedAvatars) {
+  function setModel(avatar: TAllowedAvatars) {
     model.value = avatar;
   }
 
   const avatars: Array<{
-    name: typeof AllowedAvatars;
+    name: TAllowedAvatars;
     avatar: string;
   }> = Object.entries(StaffAvatars).flatMap(([name, avatar]) => {
     return {
-      name: name as unknown as typeof AllowedAvatars,
+      name: name as TAllowedAvatars,
       avatar,
     };
   });
