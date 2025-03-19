@@ -12,7 +12,9 @@
     </template>
 
     <template v-else>
-      <OfficeCard :office="office" />
+      <OfficeCard :office="office"></OfficeCard>
+
+      <AddOfficeStaffDialog :office-id="officeId"></AddOfficeStaffDialog>
     </template>
   </div>
 </template>
@@ -24,6 +26,7 @@
   import { VProgressCircular } from "vuetify/components/VProgressCircular";
 
   import OfficeCard from "@/components/cards/OfficeCard.vue";
+  import AddOfficeStaffDialog from "@/components/dialogs/AddOfficeStaffDialog.vue";
   import SectionTitile from "@/components/headings/SectionTitile.vue";
   import OfficeApi from "@/modules/api/office";
   import type { OfficeSchema } from "@/modules/api/office/schemas";
