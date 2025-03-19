@@ -35,6 +35,9 @@ export const useAppStore = defineStore("app", () => {
   const showAddModal = computed<boolean>(() => route.query["add"] != undefined);
   const showStaffModal = computed<boolean>(() => route.query["staff"] != undefined);
 
+  // Staff state
+  const staffUpdated = ref<boolean>(false);
+
   return {
     // App
     pageTitle,
@@ -45,5 +48,8 @@ export const useAppStore = defineStore("app", () => {
     showStaffModal,
     showModal,
     hideModals,
+
+    // State
+    staffUpdated,
   };
 });
