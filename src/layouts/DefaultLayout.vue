@@ -18,6 +18,7 @@
     </v-layout>
     <AddButton />
     <AddDialog />
+    <AddStaffDialog />
   </v-app>
 </template>
 
@@ -30,6 +31,7 @@
 
   import AddButton from "@/components/buttons/AddButton.vue";
   import AddDialog from "@/components/dialogs/AddDialog.vue";
+  import AddStaffDialog from "@/components/dialogs/AddStaffDialog.vue";
   import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();
