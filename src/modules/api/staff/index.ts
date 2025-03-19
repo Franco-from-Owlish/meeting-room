@@ -39,7 +39,14 @@ export default class StaffApi extends BaseApi {
    * @returns Paginated list of offices.
    */
   async getAllStaff(pagination?: PaginationParameters): Promise<Array<StaffSchema>> {
-    const collection = this.paginate(this.database.offices.orderBy("id"), pagination ?? {});
+    const collection = this.paginate(this.database.staff.orderBy("id"), pagination ?? {});
     return await collection.toArray();
+  }
+
+  async addToOffice(officeId: number, staff: number[]) {
+    const items = staff.flatMap((staffMemberId) => {
+      return { officeId, staffMemberId };
+    });
+    return this.database.officeStaff.bulkAdd(items);
   }
 }
