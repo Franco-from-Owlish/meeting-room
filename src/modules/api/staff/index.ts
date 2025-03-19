@@ -61,7 +61,7 @@ export default class StaffApi extends BaseApi {
    * @returns Detailed office data.
    */
   async updateMember(data: StaffSchema): Promise<StaffSchema> {
-    const resp = await this.parseSchema(zStaffWriteSchema, data);
+    const resp = await this.parseSchema<StaffWriteSchema>(zStaffWriteSchema, data);
     const id = await this.database.staff.update(data.id, resp.data!);
     return this.getStaffMember(id);
   }
