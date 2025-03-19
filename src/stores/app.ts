@@ -11,13 +11,13 @@ export const useAppStore = defineStore("app", () => {
   const hideAddButton = ref<boolean>(false);
 
   // Modals / Dialogs
-  function showModal(queryKey: "add" | "staff") {
+  function showModal(queryKey: "add" | "staff", value: string = "show") {
     router.push({
       path: route.path,
       query: {
         ...route.query,
-        add: queryKey === "add" ? "show" : undefined,
-        staff: queryKey === "staff" ? "show" : undefined,
+        add: queryKey === "add" ? value : undefined,
+        staff: queryKey === "staff" ? value : undefined,
       },
     });
   }
@@ -32,8 +32,8 @@ export const useAppStore = defineStore("app", () => {
       },
     });
   }
-  const showAddModal = computed<boolean>(() => route.query["add"] === "show");
-  const showStaffModal = computed<boolean>(() => route.query["staff"] === "show");
+  const showAddModal = computed<boolean>(() => route.query["add"] != undefined);
+  const showStaffModal = computed<boolean>(() => route.query["staff"] != undefined);
 
   return {
     // App
