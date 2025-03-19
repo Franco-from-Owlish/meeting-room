@@ -8,13 +8,14 @@
       <v-btn
         block
         class="mb-4"
-        color="primary"
-        @click="submit()"
+        color="error"
+        @click="confirmed()"
       >
         {{ confirmText }}
       </v-btn>
       <v-btn
         @click="show = false"
+        variant="text"
         block
         color="primary"
       >
@@ -29,11 +30,16 @@
   import { VCard } from "vuetify/components/VCard";
   import { VDialog } from "vuetify/components/VDialog";
 
-  const show = defineModel<boolean>();
-  defineProps<{
+  const show = defineModel<boolean>({required: true});
+  const props = defineProps<{
     text: string;
     confirmText: string;
     cancelText: string;
     submit: () => void;
   }>();
+
+  function confirmed() {
+    props.submit();
+    show.value = false;
+  }
 </script>
