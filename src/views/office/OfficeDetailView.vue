@@ -65,6 +65,7 @@
 
   appStore.$patch({
     pageTitle: "Office",
+    hideAddButton: false,
   });
 
   const officeId = computed<number>(() => parseInt((route.params["id"] as string) ?? "0"));
