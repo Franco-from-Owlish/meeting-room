@@ -18,6 +18,7 @@
             :icon="mdiCloseCircleOutline"
             class="pa-1"
             color="primary-dark"
+            @click="show = false"
           />
         </v-row>
       </template>
@@ -35,7 +36,7 @@
         />
       </div>
 
-      <div v-show="tab === 1">
+      <div v-show="tab === 1" class="mb-2">
         <SectionTitile>Avatar</SectionTitile>
 
         <AvatarRadio v-model="data.avatar" />
