@@ -17,12 +17,19 @@
           variant="text"
           width="232px"
           class="mx-auto"
-          @click="deleteOffice()"
+          @click="deleteDialog = true"
         >
           Delete Office
         </v-btn>
       </template>
     </OfficeForm>
+    <ConfirmationDialog
+      v-model="deleteDialog"
+      text="Are you sure you want to delete this office?"
+      confirm-text="Delete Office"
+      cancel-text="Keep Office"
+      :submit="() => deleteOffice()"
+    />
   </div>
 </template>
 
@@ -31,6 +38,7 @@
   import { useRouter } from "vue-router";
   import { VBtn } from "vuetify/components/VBtn";
 
+  import ConfirmationDialog from "@/components/dialogs/ConfirmationDialog.vue";
   import OfficeForm from "@/components/forms/OfficeForm.vue";
   import useOfficeDetail from "@/compostables/officeDetail";
   import OfficeApi from "@/modules/api/office";
@@ -51,6 +59,7 @@
     capacity: 0,
     colour: "",
   });
+  const deleteDialog = ref<boolean>(false);
 
   function updateData() {
     if (office.value) {
