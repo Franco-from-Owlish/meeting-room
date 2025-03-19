@@ -1,12 +1,16 @@
 <template>
   <v-dialog v-model="show">
-    <v-card>
+    <v-card class="pa-3">
       <template #title>
         <v-row
-          class="pa-2"
+          class="pa-2 mb-2"
           justify="center"
         >
-          <v-icon :icon="mdiArrowLeft" />
+          <v-icon
+            :icon="mdiArrowLeft"
+            v-if="tab > 0"
+            @click="tab--"
+          />
           <v-spacer />
           <span class="dialogTitle">New Staff Member</span>
           <v-spacer />
@@ -18,13 +22,41 @@
         </v-row>
       </template>
 
+      <div v-show="tab === 0">
+        <v-text-field
+          v-model="data.firstName"
+          placeholder="First Name"
+          label="First Name"
+        />
+        <v-text-field
+          v-model="data.lastName"
+          placeholder="Last Name"
+          label="Last Name"
+        />
+      </div>
+
+      <div v-show="tab === 1">
+        <SectionTitile>Avatar</SectionTitile>
+
+        <AvatarRadio v-model="data.avatar" />
+      </div>
+
       <TabDelimiter
         v-model="tab"
         :count="2"
       />
 
       <template #actions>
-        <v-btn>Next</v-btn>
+        <v-btn
+          v-if="tab === 0"
+          @click="tab++"
+          >Next</v-btn
+        >
+        <v-btn
+          v-else
+          @click="createStaffMember()"
+          >Add Staff Member</v-btn
+        >
       </template>
     </v-card>
   </v-dialog>
@@ -38,9 +70,14 @@
   import { VDialog } from "vuetify/components/VDialog";
   import { VRow, VSpacer } from "vuetify/components/VGrid";
   import { VIcon } from "vuetify/components/VIcon";
+  import { VTextField } from "vuetify/components/VTextField";
 
   import TabDelimiter from "@/components/delimiters/TabDelimiter.vue";
+  import StaffApi from "@/modules/api/staff";
+  import type { StaffWriteSchema } from "@/modules/api/staff/schemas";
   import { useAppStore } from "@/stores/app";
+  import SectionTitile from "../headings/SectionTitile.vue";
+  import AvatarRadio from "../radios/AvatarRadio.vue";
 
   const appStore = useAppStore();
 
@@ -57,22 +94,15 @@
 
   const tab = ref<number>(0);
 
-    const api = new StaffApi();
-  const data = ref<OfficeWriteSchema>({
-    name: "Specno",
-    address: "10 Willie Van Schoor Dr, Bo Oakdale",
-    emailAddress: "info@specno.com",
-    phone: "0823649864",
-    capacity: 25,
-    colour: "#FFBE0B",
+  const api = new StaffApi();
+  const data = ref<StaffWriteSchema>({
+    firstName: "",
+    lastName: "",
+    avatar: "Batsman",
   });
 
-  async function createOffice() {
-    const resp = await api.createOffice(data.value);
-    router.push({
-      name: "OfficeDetail",
-      params: { id: resp.id },
-    });
+  async function createStaffMember() {
+    await api.createStaffMember(data.value);
+    appStore.hideModals();
   }
-
 </script>
