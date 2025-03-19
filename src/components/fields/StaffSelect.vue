@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted, ref, watch } from "vue";
+  import { computed, onMounted, ref, watch } from "vue";
   import { VChip } from "vuetify/components/VChip";
   import { VSelect } from "vuetify/components/VSelect";
 
@@ -32,12 +32,15 @@
   const model = defineModel<number[]>();
   const selected = ref<StaffSchema[]>([]);
 
+  const props = withDefaults(defineProps<{ exclude?: StaffSchema[] }>(), { exclude: () => [] });
+  const exclusionIds = computed<number[]>(() => props.exclude.flatMap((e) => e.id));
+
   const api = new StaffApi();
   const staff = ref<StaffSchema[]>([]);
 
   async function fetchStaff() {
     const resp = await api.getAllStaff();
-    staff.value = resp;
+    staff.value = resp.filter((s) => !exclusionIds.value.includes(s.id));
   }
 
   onMounted(() => {
