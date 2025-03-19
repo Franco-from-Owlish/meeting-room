@@ -40,7 +40,7 @@
         v-show="tab === 1"
         class="mb-2"
       >
-        <SectionTitile>Avatar</SectionTitile>
+        <SectionTitle>Avatar</SectionTitle>
 
         <AvatarRadio v-model="data.avatar" />
       </div>
@@ -77,11 +77,11 @@
   import { VTextField } from "vuetify/components/VTextField";
 
   import TabDelimiter from "@/components/delimiters/TabDelimiter.vue";
+  import SectionTitle from "@/components/headings/SectionTitle.vue";
+  import AvatarRadio from "@/components/radios/AvatarRadio.vue";
   import StaffApi from "@/modules/api/staff";
   import type { StaffWriteSchema } from "@/modules/api/staff/schemas";
   import { useAppStore } from "@/stores/app";
-  import SectionTitile from "../headings/SectionTitile.vue";
-  import AvatarRadio from "../radios/AvatarRadio.vue";
 
   const appStore = useAppStore();
 

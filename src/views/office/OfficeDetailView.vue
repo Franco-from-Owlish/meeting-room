@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-if="office == undefined">
-      <SectionTitile>Fetching office...</SectionTitile>
+      <SectionTitle>Fetching office...</SectionTitle>
       <v-row
         align="center"
         justify="center"
@@ -25,7 +25,7 @@
       ></v-text-field>
 
       <div class="d-flex align-center">
-        <SectionTitile class="flex-grow-1">Staff Members in Office</SectionTitile>
+        <SectionTitle class="flex-grow-1">Staff Members in Office</SectionTitle>
         <span>{{ filteredStaff.length }}</span>
       </div>
 
@@ -52,7 +52,7 @@
 
   import OfficeCard from "@/components/cards/OfficeCard.vue";
   import AddOfficeStaffDialog from "@/components/dialogs/AddOfficeStaffDialog.vue";
-  import SectionTitile from "@/components/headings/SectionTitile.vue";
+  import SectionTitle from "@/components/headings/SectionTitle.vue";
   import StaffItem from "@/components/lists/StaffItem.vue";
   import OfficeApi from "@/modules/api/office";
   import type { OfficeDetailSchema } from "@/modules/api/office/schemas";

@@ -25,8 +25,8 @@
   import { VCard } from "vuetify/components/VCard";
   import { VDialog } from "vuetify/components/VDialog";
 
+  import StaffSelect from "@/components/fields/StaffSelect.vue";
   import StaffApi from "@/modules/api/staff";
-  import StaffSelect from "../fields/StaffSelect.vue";
 
   const api = new StaffApi();
   const props = defineProps<{ officeId: number }>();

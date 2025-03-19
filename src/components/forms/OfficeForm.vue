@@ -26,7 +26,10 @@
 
     <ColourRadio v-model="data.colour" />
 
-    <v-row class="my-4">
+    <v-row
+      class="my-4"
+      align="center"
+    >
       <slot name="actions"></slot>
     </v-row>
   </v-form>

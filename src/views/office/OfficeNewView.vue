@@ -8,7 +8,7 @@
         <v-btn
           variant="flat"
           width="232px"
-          class="my-4"
+          class="my-4 mx-auto"
           @click="createOffice()"
         >
           Add Office
