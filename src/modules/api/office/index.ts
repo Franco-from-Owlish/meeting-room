@@ -73,8 +73,8 @@ export default class OfficeApi extends BaseApi {
    * @param data - Office data.
    * @returns Detailed office data.
    */
-  async updateOffice(data: OfficeSchema): Promise<OfficeDetailSchema> {
-    const resp = await this.parseSchema(zOfficeWriteSchema, data);
+  async updateOffice(data: Omit<OfficeSchema, "staffCount">): Promise<OfficeDetailSchema> {
+    const resp = await this.parseSchema<OfficeWriteSchema>(zOfficeWriteSchema, data);
     const id = await this.database.offices.update(data.id, resp.data!);
     return this.getOffice(id);
   }
