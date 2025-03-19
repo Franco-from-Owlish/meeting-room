@@ -31,7 +31,7 @@ export default class OfficeApi extends BaseApi {
    */
   async createOffice(data: OfficeWriteSchema): Promise<OfficeDetailSchema> {
     const resp = await this.parseSchema(zOfficeWriteSchema, data);
-    if (resp.status === "failed") throw Error(Object(resp.error).values());
+    if (resp.status === "failed") throw Error(Object.entries(resp.error));
     // if (resp.status === "success") {
     const id = await this.database.offices.add(resp.data!);
     return this.getOffice(id);

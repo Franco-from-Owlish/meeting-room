@@ -10,7 +10,7 @@ describe("OfficeApi", () => {
     it("can add a record", async () => {
       const data: OfficeWriteSchema = {
         name: "test",
-        phone: "+27215468899",
+        phone: "0825546547",
         emailAddress: "test@test.com",
         address: "Cape Town",
         colour: "#000000",
