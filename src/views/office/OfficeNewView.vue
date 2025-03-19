@@ -46,6 +46,7 @@
   import { useRouter } from "vue-router";
   import { VBtn } from "vuetify/components/VBtn";
   import { VForm } from "vuetify/components/VForm";
+  import { VRow } from "vuetify/components/VGrid";
   import { VTextField } from "vuetify/components/VTextField";
 
   import CapacityField from "@/components/fields/CapacityField.vue";
@@ -60,12 +61,12 @@
 
   const api = new OfficeApi();
   const data = ref<OfficeWriteSchema>({
-    name: "Specno",
-    address: "10 Willie Van Schoor Dr, Bo Oakdale",
-    emailAddress: "info@specno.com",
-    phone: "0823649864",
-    capacity: 25,
-    colour: "#FFBE0B",
+    name: "",
+    address: "",
+    emailAddress: "",
+    phone: "",
+    capacity: 0,
+    colour: "",
   });
 
   async function createOffice() {
