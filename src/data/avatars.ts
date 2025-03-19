@@ -7,8 +7,9 @@ export const AllowedAvatars = [
   "Squid",
   "Superman",
 ] as const;
+export type TAllowedAvatars = (typeof AllowedAvatars)[number];
 
-const StaffAvatars: Record<(typeof AllowedAvatars)[number], string> = {
+const StaffAvatars: Record<TAllowedAvatars, string> = {
   Balloons: new URL("@/assets/avatars/Balloons.svg", import.meta.url).href,
   Batsman: new URL("@/assets/avatars/Batsman.svg", import.meta.url).href,
   Cupid: new URL("@/assets/avatars/Cupid.svg", import.meta.url).href,
