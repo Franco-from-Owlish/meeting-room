@@ -32,6 +32,11 @@ const router = createRouter({
           path: "detail/:id",
           component: () => import("@/views/office/OfficeDetailView.vue"),
         },
+        {
+          name: "OfficeUpdate",
+          path: "update/:id",
+          component: () => import("@/views/office/OfficeUpdateView.vue"),
+        },
       ],
     },
   ],
