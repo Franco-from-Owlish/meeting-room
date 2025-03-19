@@ -30,7 +30,7 @@
   import { VCard } from "vuetify/components/VCard";
   import { VDialog } from "vuetify/components/VDialog";
 
-  const show = defineModel<boolean>({required: true});
+  const show = defineModel<boolean>({ required: true });
   const props = defineProps<{
     text: string;
     confirmText: string;
