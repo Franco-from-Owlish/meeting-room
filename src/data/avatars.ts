@@ -1,5 +1,15 @@
-const StaffAvatars = {
-  balloons: new URL("@/assets/avatars/Balloons.svg", import.meta.url).href,
+export const AllowedAvatars = [
+  "Balloons",
+  "Batsman",
+  "Cupid",
+  "Saturn",
+  "Spaceship",
+  "Squid",
+  "Superman",
+] as const;
+
+const StaffAvatars: Record<(typeof AllowedAvatars)[number], string> = {
+  Balloons: new URL("@/assets/avatars/Balloons.svg", import.meta.url).href,
   Batsman: new URL("@/assets/avatars/Batsman.svg", import.meta.url).href,
   Cupid: new URL("@/assets/avatars/Cupid.svg", import.meta.url).href,
   Saturn: new URL("@/assets/avatars/Saturn.svg", import.meta.url).href,

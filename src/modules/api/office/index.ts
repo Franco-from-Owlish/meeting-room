@@ -5,8 +5,8 @@ import {
   type OfficeWriteSchema,
   zOfficeWriteSchema,
 } from "@/modules/api/office/schemas";
+import type { StaffSchema } from "@/modules/api/staff/schemas";
 import type Office from "@/modules/dexie/entities/office";
-import type { StaffSchema } from "../staff/schemas";
 
 export default class OfficeApi extends BaseApi {
   private async serializeOffice(office: Office): Promise<OfficeSchema> {
