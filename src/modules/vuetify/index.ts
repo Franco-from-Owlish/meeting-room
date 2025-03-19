@@ -23,6 +23,9 @@ const vuetify = createVuetify({
     VListItem: {
       "bg-color": "transparent",
     },
+    VSelect: {
+      variant: "outlined",
+    },
     VTextField: {
       variant: "outlined",
     },
