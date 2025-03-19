@@ -3,7 +3,7 @@
     <v-icon
       v-for="idx in Array(count).keys()"
       :key="idx"
-      :icon="idx === model ? mdiCircleOutline : mdiCircle"
+      :icon="idx === model ? mdiCircle : mdiCircleOutline"
       size="8"
       :color="colour"
     ></v-icon>
