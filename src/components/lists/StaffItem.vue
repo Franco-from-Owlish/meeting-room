@@ -62,7 +62,7 @@
   }
 
   function editStaff() {
-    appStore.showModal("staff", props.member.id.toString())
+    appStore.showModal("staff", props.member.id.toString());
     appStore.$patch({
       staffUpdated: true,
     });
