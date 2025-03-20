@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-if="office == undefined">
-      <SectionTitile>Fetching office...</SectionTitile>
+      <SectionTitle>Fetching office...</SectionTitle>
       <v-row
         align="center"
         justify="center"
@@ -14,7 +14,10 @@
     <template v-else>
       <OfficeCard :office="office"></OfficeCard>
 
-      <AddOfficeStaffDialog :office-id="officeId"></AddOfficeStaffDialog>
+      <AddOfficeStaffDialog
+        :office="office"
+        @updated="fetchOffice()"
+      ></AddOfficeStaffDialog>
 
       <v-text-field
         v-model="search"
@@ -25,7 +28,7 @@
       ></v-text-field>
 
       <div class="d-flex align-center">
-        <SectionTitile class="flex-grow-1">Staff Members in Office</SectionTitile>
+        <SectionTitle class="flex-grow-1">Staff Members in Office</SectionTitle>
         <span>{{ filteredStaff.length }}</span>
       </div>
 
@@ -44,7 +47,6 @@
 <script setup lang="ts">
   import { computed, onMounted, ref, watch } from "vue";
   import { mdiMagnify } from "@mdi/js";
-  import { useRoute } from "vue-router";
   import { VRow } from "vuetify/components/VGrid";
   import { VList } from "vuetify/components/VList";
   import { VProgressCircular } from "vuetify/components/VProgressCircular";
@@ -52,23 +54,20 @@
 
   import OfficeCard from "@/components/cards/OfficeCard.vue";
   import AddOfficeStaffDialog from "@/components/dialogs/AddOfficeStaffDialog.vue";
-  import SectionTitile from "@/components/headings/SectionTitile.vue";
+  import SectionTitle from "@/components/headings/SectionTitle.vue";
   import StaffItem from "@/components/lists/StaffItem.vue";
-  import OfficeApi from "@/modules/api/office";
-  import type { OfficeDetailSchema } from "@/modules/api/office/schemas";
+  import useOfficeDetail from "@/compostables/officeDetail";
   import type { StaffSchema } from "@/modules/api/staff/schemas";
   import { useAppStore } from "@/stores/app";
 
   const appStore = useAppStore();
-  const route = useRoute();
-  const api = new OfficeApi();
 
   appStore.$patch({
     pageTitle: "Office",
+    hideAddButton: false,
   });
 
-  const officeId = computed<number>(() => parseInt((route.params["id"] as string) ?? "0"));
-  const office = ref<OfficeDetailSchema>();
+  const { office, handleOfficeIdUpdate, fetchOffice } = useOfficeDetail();
 
   const search = ref<string>("");
   const filteredStaff = computed<StaffSchema[]>(() => {
@@ -78,19 +77,19 @@
     );
   });
 
-  async function fetchOffice() {
-    const resp = await api.getOffice(officeId.value);
-    office.value = resp;
-  }
-
-  function handleOfficeIdUpdate() {
-    if (officeId.value === 0) return;
-    fetchOffice();
-  }
-
   onMounted(() => {
     handleOfficeIdUpdate();
   });
 
-  watch(() => officeId, handleOfficeIdUpdate);
+  watch(
+    () => appStore.staffUpdated,
+    (value) => {
+      if (value) {
+        fetchOffice();
+        appStore.$patch({
+          staffUpdated: false,
+        });
+      }
+    },
+  );
 </script>

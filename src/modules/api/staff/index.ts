@@ -43,10 +43,40 @@ export default class StaffApi extends BaseApi {
     return await collection.toArray();
   }
 
+  /**
+   * @param officeId - Office primary key.
+   * @param staff - List of staff primary keys.
+   * @returns Operation status.
+   */
   async addToOffice(officeId: number, staff: number[]) {
     const items = staff.flatMap((staffMemberId) => {
       return { officeId, staffMemberId };
     });
     return this.database.officeStaff.bulkAdd(items);
+  }
+
+  /**
+   * Update an existing office.
+   * @param data - Office data.
+   * @returns Detailed office data.
+   */
+  async updateMember(data: StaffSchema): Promise<StaffSchema> {
+    const resp = await this.parseSchema<StaffWriteSchema>(zStaffWriteSchema, data);
+    const id = await this.database.staff.update(data.id, resp.data!);
+    return this.getStaffMember(id);
+  }
+
+  /**
+   * Delete an existing office.
+   * @param data - Office data.
+   */
+  async deleteStaff(id: number) {
+    const staff = await this.database.officeStaff
+      .filter((officeStaff) => officeStaff.staffMemberId === id)
+      .primaryKeys();
+    await Promise.all([
+      await this.database.officeStaff.bulkDelete(staff),
+      await this.database.staff.delete(id),
+    ]);
   }
 }

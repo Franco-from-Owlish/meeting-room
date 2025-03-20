@@ -67,4 +67,29 @@ export default class OfficeApi extends BaseApi {
       data.flatMap<Promise<OfficeSchema>>(async (e) => await this.serializeOffice(e)),
     );
   }
+
+  /**
+   * Update an existing office.
+   * @param data - Office data.
+   * @returns Detailed office data.
+   */
+  async updateOffice(data: Omit<OfficeSchema, "staffCount">): Promise<OfficeDetailSchema> {
+    const resp = await this.parseSchema<OfficeWriteSchema>(zOfficeWriteSchema, data);
+    const id = await this.database.offices.update(data.id, resp.data!);
+    return this.getOffice(id);
+  }
+
+  /**
+   * Delete an existing office.
+   * @param data - Office data.
+   */
+  async deleteOffice(id: number) {
+    const staff = await this.database.officeStaff
+      .filter((officeStaff) => officeStaff.officeId === id)
+      .primaryKeys();
+    await Promise.all([
+      await this.database.officeStaff.bulkDelete(staff),
+      await this.database.offices.delete(id),
+    ]);
+  }
 }

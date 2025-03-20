@@ -3,11 +3,21 @@
     <div id="colourIndicator"></div>
 
     <template #title>
-      <div
-        class="companyName"
-        @click="toOfficeDetail()"
-      >
-        {{ office.name }}
+      <div class="d-flex align-center">
+        <div
+          class="companyName flex-grow-1"
+          @click="toOfficeDetail()"
+        >
+          {{ office.name }}
+        </div>
+        <div>
+          <v-icon
+            size="18"
+            color="primary-dark"
+            :icon="mdiPencilOutline"
+            @click="toUpdate()"
+          />
+        </div>
       </div>
     </template>
 
@@ -66,7 +76,7 @@
 <script setup lang="ts">
   import { computed, ref } from "vue";
   import { TinyColor } from "@ctrl/tinycolor";
-  import { mdiChevronDown, mdiChevronUp } from "@mdi/js";
+  import { mdiChevronDown, mdiChevronUp, mdiPencilOutline } from "@mdi/js";
   import { useRouter } from "vue-router";
   import { VCard } from "vuetify/components/VCard";
   import { VRow } from "vuetify/components/VGrid";
@@ -90,6 +100,13 @@
   function toOfficeDetail() {
     router.push({
       name: "OfficeDetail",
+      params: { id: props.office.id },
+    });
+  }
+
+  function toUpdate() {
+    router.push({
+      name: "OfficeUpdate",
       params: { id: props.office.id },
     });
   }

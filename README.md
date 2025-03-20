@@ -2,6 +2,14 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+> NOTE: Safari does not fully support IndexedDB, causing issues when saving.
+> Please use Chrome.
+
+## GitHub Pages
+
+The deployed site can be access
+[here](https://franco-from-owlish.github.io/meeting-room/).
+
 ## Project Setup
 
 ```sh
